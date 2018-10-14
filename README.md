@@ -1,2 +1,0 @@
-# DiplomaMaster
-PID controller
