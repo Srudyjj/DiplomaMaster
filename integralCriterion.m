@@ -1,8 +1,12 @@
-function y = integralCriterion(data, time)
-    errorList = [] 
-    for i=1:1:size(data)      
-        err = 1 - data(i) 
-        errorList(end+1) = abs(err); 
-    end
-    y = trapz(time, errorList) 
-end 
+function y = integralCriterion(data)
+    err = data.Nominal.Error.Data;
+    time = data.Nominal.Error.Time;
+    tau = 2;
+    d = tau.*diff(err).^2;
+    d(end+1) = 0;
+    er = err.^2;
+    f = er + d;
+    y = trapz(time, f);
+    disp('Area');
+    disp(y) 
+end
