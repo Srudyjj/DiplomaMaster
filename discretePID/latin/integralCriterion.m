@@ -8,5 +8,11 @@ function y = integralCriterion(data)
     f = er + d;
     y = trapz(time, f);
     disp('Area');
-    disp(y) 
+    disp(y)
+    disp(data.DesignVars)
+    file=fopen('DesignVars.txt','w');
+    for i = 1:4
+        fprintf(file, '%s %f\n', data.DesignVars(i).Name, data.DesignVars(i).Value);
+    end
+    fclose(file);
 end
